@@ -497,15 +497,7 @@ def _collect_target_attribute(
     Note: this function requires specific code for each framework, as there's no
     standard attribute to use.
     """
-    # FastAPI
-    root_path = scope.get("root_path", "")
-
-    route = scope.get("route")
-    path_format = getattr(route, "path_format", None)
-    if path_format:
-        return f"{root_path}{path_format}"
-
-    return None
+    return scope.get("path", "")
 
 
 class OpenTelemetryMiddleware:
